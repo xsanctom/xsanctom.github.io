@@ -1,7 +1,5 @@
 # Tom Butler - Portfolio & Resources
-My new geocities.
-
-Developed in Osaka.
+My new geocities, developed in Osaka.
 
 ## Portfolio
 
