@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tom Butler | Designer & Prototyper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="simple-grid.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  <style>
+  .content1 {
+    color: white;
+    text-align: left;
+  }
+  a:hover {
+    opacity: 0.6;
+    transition: 200ms;
+  }
+  h2 {
+    margin-bottom: 40px;
+  }
+  .h00 {
+    font-weight: 300;
+  }
+  .h0 {
+    color: #666;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 24px 0 24px;
+    text-transform: uppercase;
+  }
+  .h-contact {
+    color: #666;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .c-title {
+    border-bottom: 1px solid #c2dce6;
+    color: #222;
+    font-weight: 600;
+    text-decoration: none;
+    padding-bottom: 2px;
+    transition: color 0.5s ease;
+  }
+  .c-desc {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .contact {
+    padding-left: 18px;
+    border-left: 1px solid #c2dce6;
+    border-right: 1px solid #c2dce6;
+    margin-top: 50px !important;
+    margin-bottom: 60px !important;
+  }
+  canvas {
+    opacity: 0.45;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  html, body {
+    margin: 0;
+  }
+</style>
+<canvas></canvas>
+  <div class="container"><img src="3_wave.svg" alt="" style="max-height: 70px; padding-top: 70px; position: relative;"></div>
+  
+  <div class="container center"><h1 class="h00">I&apos;m <span style="font-weight: 700;">Tom</span>, a digital marketer and designer currently living and working in Osaka, Japan.</h1></div>
+  
+  <div class="container center" style="border-radius: 5px;">
+      <div class="row">
+        <div class="col-4 content1">
+          <div class="h0">WEB</div>
+          <div class="entry">
+            <div><a href="https://www.youtap.com/" target="_blank" class="c-title">Youtap</a></div>
+            <div class="c-desc">Designer, Digital Specialist</div>
+          </div>
+          <div class="entry">
+            <div><a href="https://www.sparkdigital.co.nz/" target="_blank" class="c-title">Spark Digital</a></div>
+            <div class="c-desc">Designer, Internal Site Administrator</div>
+          </div>
+        </div>
+        <div class="col-4 content1">
+            <div class="h0">DESIGN</div>
+            <div class="entry">
+              <div><a href="#" target="_blank" class="c-title">Sports Crew</a></div>
+              <div class="c-desc">Designer</div>
+            </div>
+            <div class="entry">
+              <div><a href="http://www.murphysosaka.com/" target="_blank" class="c-title">Murphys Irish Pub</a></div>
+              <div class="c-desc"> Designer, Consultant</div>
+            </div>
+            <div class="entry">
+              <div><a href="http://barcrawlosaka.com" target="_blank" class="c-title">Bar Crawl Osaka</a></div>
+              <div class="c-desc">Designer, Developer, Consultant</div>
+            </div>
+            <div class="entry">
+              <div><a href="http://crownselfstorage.co.nz/" target="_blank" class="c-title">Crown Storage</a></div>
+              <div class="c-desc">Designer, Developer</div>
+            </div>
+        </div>
+        <div class="col-4 content1">
+          <div class="h0">PERSONAL</div>
+          <div class="entry">
+            <div><a href="#" target="_blank" class="c-title">Logo Explorations</a></div>
+            <div class="c-desc"></div>
+          </div>
+          <div class="entry">
+            <div><a href="#" target="_blank" class="c-title">Conceptual Work</a></div>
+            <div class="c-desc"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 content1 contact">
+          <div class="h-contact"><span style="color: #111111; margin-right: 12px;">CONTACT</span>  |  +81 070 5123 1408  |  GMAIL  </div>
+        </div>
+      </div>
+    </div>
+</body>
+<script>
+  document.addEventListener('touchmove', function (e) {
+      e.preventDefault()
+  })
+  var c = document.getElementsByTagName('canvas')[0],
+      x = c.getContext('2d'),
+      pr = window.devicePixelRatio || 1,
+      w = window.innerWidth,
+      h = window.innerHeight,
+      f = 90,
+      q,
+      m = Math,
+      r = 0,
+      u = m.PI*2,
+      v = m.cos,
+      z = m.random
+  c.width = w*pr
+  c.height = h*pr
+  x.scale(pr, pr)
+  x.globalAlpha = 0.6
+  function i(){
+      x.clearRect(0,0,w,h)
+      q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+      while(q[1].x<w+f) d(q[0], q[1])
+  }
+  function d(i,j){   
+      x.beginPath()
+      x.moveTo(i.x, i.y)
+      x.lineTo(j.x, j.y)
+      var k = j.x + (z()*2-0.25)*f,
+          n = y(j.y)
+      x.lineTo(k, n)
+      x.closePath()
+      r-=u/-50
+      x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+      x.fill()
+      q[0] = q[1]
+      q[1] = {x:k,y:n}
+  }
+  function y(p){
+      var t = p + (z()*2-1.1)*f
+      return (t>h||t<0) ? y(p) : t
+  }
+  document.onclick = i
+  document.ontouchstart = i
+  i()
+</script>
+</html>
