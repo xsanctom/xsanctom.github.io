@@ -6,6 +6,7 @@
   <title>Tom Butler | Designer & Prototyper</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="simple-grid.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script src="main.js"></script>
 </head>
 <body>
@@ -98,7 +99,7 @@
         <div class="col-4 content1">
             <div class="h0">DESIGN</div>
             <div class="entry">
-              <div><a href="#" target="_blank" class="c-title">Sports Crew</a></div>
+              <div><a href="sc_demo.png" class="c-title image-popup-vertical-fit">Sports Crew</a></div>
               <div class="c-desc">Designer</div>
             </div>
             <div class="entry">
@@ -180,5 +181,60 @@
   document.onclick = i
   document.ontouchstart = i
   i()
+</script>
+  
+<style>
+  /* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+	padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+	top: 0;
+	bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+	padding: 0;
+}
+</style>
+  
+<script>
+  $(document).ready(function() {
+
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-img-mobile',
+		image: {
+			verticalFit: true
+		}
+		
+	});
+
+	$('.image-popup-fit-width').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		image: {
+			verticalFit: false
+		}
+	});
+
+	$('.image-popup-no-margins').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		fixedContentPos: true,
+		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});
+
+});
 </script>
 </html>
